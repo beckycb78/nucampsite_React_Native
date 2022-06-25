@@ -69,7 +69,7 @@ const HomeScreen = () => {
             <FeaturedItem 
                 item={featPartner}
                 isLoading={partners.isLoading}
-                errMess={partners.errMess}
+                errMess={partners.err}
             />            
         </ScrollView>
     )
