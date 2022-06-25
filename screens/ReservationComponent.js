@@ -17,9 +17,9 @@ function ReservationScreen () {
     };
 
     const handleReservation = () => {
-        console.log(campers);
-        console.log(hikeIn);
-        console.log(date);
+        console.log('campers:', campers);
+        console.log('hikeIn:', hikeIn);
+        console.log('date:', date);
 
         setShowModal(!showModal);
     };
