@@ -63,9 +63,11 @@ const HomeScreen = () => {
     const featCampsite = campsites.campsitesArray.find((item) => item.featured);
     const featPromotion = promotions.promotionsArray.find((item) => item.featured);
     const featPartner = partners.partnersArray.find((item) => item.featured)
+    
     useEffect(() => {
         scaleAnimation.start();
     }, []);
+    
     return (
         <Animated.ScrollView style={{ transform: [{ scale: scaleValue }] }}>
             <FeaturedItem 
