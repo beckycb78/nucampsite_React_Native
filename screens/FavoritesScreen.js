@@ -15,6 +15,8 @@ const FavoritesScreen = ({navigation}) => {
         (state) => state.favorites
     );
 
+    const dispatch = useDispatch();
+
     const renderFavoriteItem = ({ item: campsite }) => {
         return (
             <SwipeRow rightOpenValue={-100}>
@@ -28,25 +30,23 @@ const FavoritesScreen = ({navigation}) => {
                 </View>
                 <View>
                     <ListItem 
-                    onPress={() =>
-                        navigation.navigate('Directory', {
-                            screen: 'CampsiteInfo',
-                            params: { campsite }
-                        })
-                } 
-                >
-                    <Avatar rounded source={{ uri: baseUrl + campsite.image }} />
-                    <ListItem.Content>
-                        <ListItem.Title>{campsite.name}</ListItem.Title>
-                        <ListItem.Subtitle>{campsite.description}</ListItem.Subtitle>
-                    </ListItem.Content>        
-                </ListItem>
+                        onPress={() =>
+                            navigation.navigate('Directory', {
+                                screen: 'CampsiteInfo',
+                                params: { campsite }
+                            })
+                        } 
+                    >
+                        <Avatar rounded source={{ uri: baseUrl + campsite.image }} />
+                        <ListItem.Content>
+                            <ListItem.Title>{campsite.name}</ListItem.Title>
+                            <ListItem.Subtitle>{campsite.description}</ListItem.Subtitle>
+                        </ListItem.Content>        
+                    </ListItem>
                 </View>                
             </SwipeRow>
         )
     }   
-
-    const dispatch = useDispatch();
 
     if(isLoading) {
         return <Loading />;
