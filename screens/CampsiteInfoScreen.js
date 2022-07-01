@@ -131,7 +131,8 @@ const CampsiteInfoScreen = ({ route }) => {
                     <View style={{margin: 10}}>
                         <Button 
                             onPress={() => {
-                                setShowModal(!showModal)
+                                setShowModal(!showModal);
+                                resetForm();
                             }}
                             color='#808080'
                             title='Cancel'
