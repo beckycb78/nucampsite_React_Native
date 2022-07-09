@@ -21,6 +21,7 @@ import LoginScreen from './LoginScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/core';
 import NetInfo from '@react-native-community/netinfo';
 
+
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
@@ -237,8 +238,12 @@ const Main = () => {
         dispatch(fetchComments());
     }, [dispatch]);
 
-    useEffect(() => {
-        NetInfo.fetch().then((connectionInfo) => {
+    useEffect(() => {        
+        showNetInfo();
+    }, [])
+
+    const showNetInfo = async () => {
+        await NetInfo.fetch().then((connectionInfo) => {
             Platform.OS === 'ios'
                 ? Alert.alert(
                       'Initial Network Connectivity Type:',
@@ -250,7 +255,6 @@ const Main = () => {
                       ToastAndroid.LONG
                   );
         });
-
         const unsubscribeNetInfo = NetInfo.addEventListener(
             (connectionInfo) => {
                 handleConnectivityChange(connectionInfo);
@@ -258,7 +262,7 @@ const Main = () => {
         );
 
         return unsubscribeNetInfo;
-    }, [])
+    }
 
     const handleConnectivityChange = (connectionInfo) => {
         let connectionMsg = 'You are now connected to an active network.'
